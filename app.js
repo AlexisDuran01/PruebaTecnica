@@ -5,7 +5,7 @@ import { productos } from './Data/products.js';
 const app = express();
 const port = 3000;
 
-app.use (express.json)
+app.use (express.json())
 
 const categoriasValidas = ['electrónica', 'electronica', 'hogar', 'oficina'];
 
@@ -64,9 +64,9 @@ app.get('/api/productos/:id', (req, res) => {
 // Crear un producto 
 app.post('/api/productos', (req, res) => {
 
-    const { Nombre, Categoría, PrecioUnitario, Stock } = req.body;
+    const { Nombre, Categoria, PrecioUnitario, Stock } = req.body;
   
-    if (Nombre === undefined || PrecioUnitario === undefined || Categoría === undefined ){
+    if (Nombre === undefined || PrecioUnitario === undefined || Categoria === undefined ){
         return res.status(400).json({
             "error": "Validación fallida",
             "detalles": [
@@ -95,7 +95,7 @@ app.post('/api/productos', (req, res) => {
         });
     }
 
-    let categoriaRecibida = Categoría;
+    let categoriaRecibida = Categoria;
     const categoriasValidas = ['electrónica', 'electronica', 'hogar', 'oficina'];
 
     if (!categoriaRecibida || !categoriasValidas.includes(categoriaRecibida.toLowerCase().trim())) {
